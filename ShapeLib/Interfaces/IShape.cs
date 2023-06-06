@@ -2,5 +2,6 @@
 
 public interface IShape
 {
-    double Area();
+     double  Area();
+
 }

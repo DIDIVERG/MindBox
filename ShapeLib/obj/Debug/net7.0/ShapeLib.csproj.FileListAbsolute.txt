@@ -1,0 +1,12 @@
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\bin\Debug\net7.0\ShapeLib.deps.json
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\bin\Debug\net7.0\ShapeLib.dll
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\bin\Debug\net7.0\ShapeLib.pdb
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ShapeLib.csproj.AssemblyReference.cache
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ShapeLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ShapeLib.AssemblyInfoInputs.cache
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ShapeLib.AssemblyInfo.cs
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ShapeLib.csproj.CoreCompileInputs.cache
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ShapeLib.dll
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\refint\ShapeLib.dll
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ShapeLib.pdb
+C:\Users\ILYA\RiderProjects\MindBox\ShapeLib\obj\Debug\net7.0\ref\ShapeLib.dll

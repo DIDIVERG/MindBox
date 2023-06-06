@@ -1,31 +1,75 @@
-﻿using System.Xml;
+﻿using System.ComponentModel;
+using System.Xml;
+using ShapeLib.Exceptions;
 using ShapeLib.Interfaces;
 
 namespace ShapeLib.Shapes;
 
-public class Triangle : IShape
+public class Triangle : Shape
 {
-    private readonly double _side1;
-    private readonly double _side2;
-    private readonly double _side3;
-
-    public Triangle(double side1, double side2, double side3)
+    
+    public Triangle(List<Point> points) : base(points)
     {
-        _side1 = side1;
-        _side2 = side2;
-        _side3 = side3;
+        if (points.Count != 3)
+        {
+            throw new PointsQuantityException($"Points quantity must be 3 but this is {points.Count}");
+        }
+        CreateLines();
+        ValidateTriangle();
     }
 
-    public double Area()
+    public Triangle(List<Line> lines) : base(lines)
     {
-        double p = (_side1 + _side2 + _side3) / 2;
-        return Math.Sqrt(p * (p - _side1) * (p - _side2) * (p - _side3));
+        if (lines.Count != 3)
+        {
+            throw new LinesQuantityException($"Lines quantity must be 3 but this is {lines.Count}");
+        }
+        ValidateTriangle();
     }
-    // comparison with 1e-10 used to avoid accuracy losing when compare two floating point numbers. 
+    
     public bool IsRightAngled()
     {
-        double[] sides = { _side1, _side2, _side3 };
-        Array.Sort(sides);
-        return Math.Abs(Math.Pow(sides[2], 2) - Math.Pow(sides[0], 2) - Math.Pow(sides[1], 2)) < 1e-10;
+        List<double> sideLengths = new List<double>();
+        for (int i = 0; i < Lines.Count; i++)
+        {
+            sideLengths.Add(Lines[i].Value);
+        }
+        sideLengths.Sort();
+        double c = sideLengths.Max();
+        sideLengths.Remove(c);
+        double a = sideLengths[0];
+        double b = sideLengths[1];
+        
+        return Math.Abs(Math.Pow(c, 2) - (Math.Pow(a, 2) + Math.Pow(b, 2))) < 1e-10;
+    } 
+    
+    public override double Area()
+    {
+        double a = Lines[0].Value;
+        double b = Lines[1].Value;
+        double c = Lines[2].Value;
+        double s = (a + b + c) / 2; 
+        double area = Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+        return area;
     }
+
+    private void ValidateTriangle()
+    {
+        if (!IsValidTriangle())
+        {
+            throw new FigureNotExistException
+                ($"Figure with corresponding sides doesn't exist {Lines[0]} {Lines[1]} {Lines[2]}");
+        }
+    }
+    private bool IsValidTriangle()
+    {
+        double[] sideLengths = new double[3];
+        for (int i = 0; i < Lines.Count; i++)
+        {
+            sideLengths[i] = Lines[i].Value;
+        }
+        Array.Sort(sideLengths);
+        return (sideLengths[0] + sideLengths[1] > sideLengths[2]);
+    }
+    
 }
